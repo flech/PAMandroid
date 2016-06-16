@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">DietHelper</string>
+    <string name="action_settings">Settings</string>
+    <string name="homeText">Aplikacja ułatwiająca trzymanie się diety i wyznaczonych celów kalorycznych. Wybierz opcję z menu aby przejść dalej.</string>
+    <string name="appName">Diet Helper</string>
+    <string name="produktyButton">Produkty</string>
+    <string name="produkty_view_button">produkty_view_button</string>
+    <string name="title_activity_product_view">productViewActivity</string>
+    <string name="weather_api">Weather Api</string>
+</resources>

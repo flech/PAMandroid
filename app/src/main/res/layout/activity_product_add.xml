@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:background="@drawable/foodbg"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.ireal.diethelp.ProductAddActivity">
+
+    <EditText
+        android:id="@+id/nazwa_text"
+        android:layout_width="200px"
+        android:textColor="#dcdcc7"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/whey_text"
+        android:layout_centerHorizontal="true"
+        android:text="Nazwa"/>
+
+    <EditText
+        android:id="@+id/whey_text"
+        android:layout_width="wrap_content"
+        android:textColor="#dcdcc7"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/carb_text"
+        android:layout_alignLeft="@+id/carb_text"
+        android:layout_alignStart="@+id/carb_text"
+        android:layout_marginTop="40dp"
+        android:text="Białko [g]"/>
+
+    <EditText
+        android:id="@+id/fat_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#dcdcc7"
+        android:layout_below="@+id/carb_text"
+        android:layout_alignLeft="@+id/carb_text"
+        android:layout_alignStart="@+id/carb_text"
+        android:layout_marginTop="40dp"
+        android:text="Tłuszcz [g]"/>
+
+    <EditText
+        android:id="@+id/carb_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#dcdcc7"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/nazwa_text"
+        android:layout_alignStart="@+id/nazwa_text"
+        android:layout_marginTop="40dp"
+        android:text="Węglowodany [g]"/>
+
+    <Button
+        android:id="@+id/addProduct_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dodaj"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="56dp" />
+
+</RelativeLayout>
