@@ -20,7 +20,12 @@
         <activity android:name=".ProductViewActivity" />
         <activity android:name=".ProductAddActivity" />
         <activity android:name=".WeatherApiActivity" />
-        <activity android:name=".DayViewActivity"></activity>
+        <activity android:name=".DayViewActivity" />
+        <activity android:name=".DayAddActivity" />
+        <activity
+            android:name=".DayDetailsActivity"
+            android:label="@string/title_activity_day_details"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

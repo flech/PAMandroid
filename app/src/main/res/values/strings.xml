@@ -8,4 +8,6 @@
     <string name="title_activity_product_view">productViewActivity</string>
     <string name="weather_api">Weather Api</string>
     <string name="days">Dni</string>
+    <string name="addDay">Dodaj nowy dzień</string>
+    <string name="title_activity_day_details">DayDetailsActivity</string>
 </resources>

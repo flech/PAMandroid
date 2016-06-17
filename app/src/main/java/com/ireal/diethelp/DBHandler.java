@@ -17,7 +17,7 @@ public class DBHandler extends SQLiteOpenHelper {
     // Database Version
     private static final int DATABASE_VERSION = 1;
     // Database Name
-    private static final String DATABASE_NAME = "myDatabase6";
+    private static final String DATABASE_NAME = "myDatabase9";
     // Contacts table name
     private static final String TABLE_PRODUCTS = "products";
     private static final String TABLE_DAYS = "days";
@@ -31,6 +31,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_WHEY = "whey";
     private static final String KEY_CARB = "carb";
     private static final String KEY_FAT= "fat";
+    private static final String KEY_KCAL= "kcal";
 
     public DBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -40,8 +41,10 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_PRODUCTS_TABLE = "CREATE TABLE " + TABLE_PRODUCTS + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT," + KEY_WHEY + " INT," + KEY_CARB + " INT," + KEY_FAT+ " INT" + ")";
+
         String CREATE_DAYS_TABLE = "CREATE TABLE " + TABLE_DAYS + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT" + ")";
+                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT," + KEY_KCAL + " INT" +  ")";
+
         String CREATE_DAYS_PRODS_TABLE = "CREATE TABLE " + TABLE_DAYS_PRODS + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_DAY_ID + " INT," + KEY_PROD_ID + " INT" + ")";
         db.execSQL( CREATE_PRODUCTS_TABLE);
@@ -76,6 +79,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, day.getName());
+        values.put(KEY_KCAL, day.getKcal());
 
 
 // Inserting Row
@@ -120,7 +124,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 Day day = new Day();
                 day.setId(Integer.parseInt(cursor.getString(0)));
                 day.setName(cursor.getString(1));
-
+                day.setKcal(Integer.parseInt(cursor.getString(2)));
                 dayList.add(day);
             } while (cursor.moveToNext());
         }

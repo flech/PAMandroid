@@ -6,11 +6,13 @@ package com.ireal.diethelp;
 public class Day {
     private int id;
     private String name;
+    private int kcal;
     public Day(){
 
     }
-    public Day (String name){
+    public Day (String name,int kcal){
         this.name=name;
+        this.kcal=kcal;
     }
 
     public int getId() {
@@ -27,5 +29,13 @@ public class Day {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getKcal() {
+        return kcal;
+    }
+
+    public void setKcal(int kcal) {
+        this.kcal = kcal;
     }
 }
