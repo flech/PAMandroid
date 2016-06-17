@@ -31,6 +31,13 @@
         android:text="@string/produkty_view_button"/>
 
     <Button
+        android:id="@+id/days_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="580px"
+        android:text="@string/days"/>
+
+    <Button
         android:id="@+id/weather_api_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

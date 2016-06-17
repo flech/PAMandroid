@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class WeatherApiActivity extends AppCompatActivity {
 
-    TextView cityField, currentTemperatureField;
+    TextView cityField, currentTemperatureField,messageField;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +21,7 @@ public class WeatherApiActivity extends AppCompatActivity {
         final Button getWeather = (Button) findViewById(R.id.get_weather_button);
 
         cityField = (TextView)findViewById(R.id.city_field);
+        messageField = (TextView)findViewById(R.id.weather_message);
         currentTemperatureField = (TextView)findViewById(R.id.current_temperature_field);
 
 
@@ -28,6 +29,11 @@ public class WeatherApiActivity extends AppCompatActivity {
             public void processFinish(String weather_city, String weather_temperature) {
                 cityField.setText(weather_city);
                 currentTemperatureField.setText(weather_temperature);
+                if (Float.parseFloat(weather_temperature.substring(0, weather_temperature.length()-1) ) > 15){
+                    messageField.setText("Pogoda sprzyja aktywności na dworzu.");
+                }else{
+                    messageField.setText("Pogoda nie sprzyja aktywności na dworzu.");
+                }
 
             }
         });
@@ -40,6 +46,11 @@ public class WeatherApiActivity extends AppCompatActivity {
                     public void processFinish(String weather_city, String weather_temperature) {
                         cityField.setText(weather_city);
                         currentTemperatureField.setText(weather_temperature);
+                        if (Float.parseFloat(weather_temperature.substring(0, weather_temperature.length()-1) ) > 15){
+                            messageField.setText("Pogoda sprzyja aktywności na dworzu.");
+                        }else{
+                            messageField.setText("Pogoda nie sprzyja aktywności na dworzu.");
+                        }
 
                     }
                 });
