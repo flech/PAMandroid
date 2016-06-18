@@ -10,6 +10,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.ireal.diethelp.DayAddActivity">
 
+    <ListView
+        android:id="@+id/product_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
     <EditText
         android:id="@+id/nameDayTextView"
         android:layout_width="800px"

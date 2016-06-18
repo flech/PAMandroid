@@ -26,8 +26,8 @@ public class ProductViewActivity extends AppCompatActivity {
 //        db.addProduct(new Product("Ryż", 100,100,100));
 //        db.addProduct(new Product("Mleko", 10,100,10));
 //        db.addProduct(new Product("Kurczzak", 10,100,10));
-        db.addDay(new Day("Poniedzialek",1000));
-        db.addDay(new Day("Wtorek",2000));
+//        db.addDay(new Day("Poniedzialek",1000));
+//        db.addDay(new Day("Wtorek",2000));
         List<Product> products = db.getAllProducts();
 
         for (Product product : products) {

@@ -27,6 +27,7 @@ public class DayViewActivity extends AppCompatActivity {
         for (Day day : days) {
             String log = "Id: " + day.getId() + " ,Name: " + day.getName();
             Log.d("Day: : ", log);
+
         }
         final String[] pages = new String[days.size()];
         int i= 0;

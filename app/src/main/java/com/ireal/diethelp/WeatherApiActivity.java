@@ -59,7 +59,7 @@ public class WeatherApiActivity extends AppCompatActivity {
                 asyncTask.execute(editTextValue);
             }
         });
-       asyncTask.execute("Gdansk"); //  asyncTask.execute("Latitude", "Longitude")
+       asyncTask.execute("Gdansk"); //
 
     }
 }

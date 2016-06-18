@@ -51,16 +51,27 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL( CREATE_DAYS_TABLE);
         db.execSQL( CREATE_DAYS_PRODS_TABLE);
     }
+    public Day getDay(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_DAYS, new String[] { KEY_ID,
+                        KEY_NAME, KEY_KCAL }, KEY_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        Day contact = new Day(cursor.getString(1), Integer.parseInt(cursor.getString(2)));
+// return shop
+        return contact;
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUCTS);
-        // Creating tables again
+
         onCreate(db);
     }
 
-    // Adding new shop
+
     public void addProduct(Product prod) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -70,9 +81,9 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_FAT, prod.getFat());
         values.put(KEY_CARB, prod.getCarb());
 
-// Inserting Row
+
         db.insert(TABLE_PRODUCTS, null, values);
-        db.close(); // Closing database connection
+        db.close();
     }
     public void addDay(Day day) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -82,21 +93,27 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_KCAL, day.getKcal());
 
 
-// Inserting Row
+
         db.insert(TABLE_DAYS, null, values);
-        db.close(); // Closing database connection
+        db.close();
+    }
+    public void addDay_Prod(int prod_id, int day_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_PROD_ID, prod_id);
+        values.put(KEY_DAY_ID, day_id);
+        db.insert(TABLE_DAYS_PRODS, null, values);
+        db.close();
     }
 
-    // Getting All Shops
     public List<Product> getAllProducts() {
         List<Product> productList = new ArrayList<Product>();
-// Select All Query
+
         String selectQuery = "SELECT * FROM " + TABLE_PRODUCTS;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-// looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
                 Product product = new Product();
@@ -130,6 +147,32 @@ public class DBHandler extends SQLiteOpenHelper {
         }
 
         return dayList;
+    }
+    public List<Product> getIdProducts(int day_id) {
+        List<Product> productList = new ArrayList<Product>();
+        List<String> productIds = new ArrayList<String>();
+
+        String selectQuery = "SELECT id_prod FROM " + TABLE_DAYS_PRODS + " WHERE id_day = "+day_id;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                productIds.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+
+        for (String prodId : productIds) {
+            cursor = db.query(TABLE_PRODUCTS, new String[] { KEY_ID,
+                            KEY_NAME, KEY_WHEY, KEY_CARB, KEY_FAT }, KEY_ID + "=?",
+                    new String[] { String.valueOf(prodId) }, null, null, null, null);
+            if (cursor != null)
+                cursor.moveToFirst();
+            productList.add(new Product(cursor.getString(1), Integer.parseInt(cursor.getString(2)),
+                Integer.parseInt(cursor.getString(3)),Integer.parseInt(cursor.getString(4))));
+        }
+        return productList;
     }
 }
 
