@@ -25,14 +25,25 @@
         android:textColor="#dcdcc7"
         android:textSize="34dp" />
     <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:text=""
+    android:id="@+id/dayKcalTextView"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+    android:textColor="#dcdcc7"
+    android:textSize="20dp" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text=""
-        android:id="@+id/dayKcalTextView"
+        android:id="@+id/dayMessageKcalTextView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="367dp"
+        android:layout_marginTop="467dp"
         android:textColor="#dcdcc7"
         android:textSize="20dp" />
 </RelativeLayout>
